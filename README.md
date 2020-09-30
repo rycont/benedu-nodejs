@@ -6,10 +6,10 @@ Do Something Fun🤣, Based on Benedu2020
 ```typescript
 import getUserToken from './auth/getUserToken'
 import getEnv from './env'
-import getGeneratedExam from './exam/getGeneratedExam'
+import getCreatedExam from './exam/getCreatedExam'
 
 getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
-  .then(() => getGeneratedExam())
+  .then(() => getCreatedExam())
   .then(console.log)
 ```
 ```
@@ -28,7 +28,7 @@ getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
 ]
 ```
 
-## Get Generated Exam(문제은행)
+## Get Created Exam(문제은행)
 ```typescript
 import getUserToken from './auth/getUserToken'
 import getTaskExamList from './exam/getTaskExamList'

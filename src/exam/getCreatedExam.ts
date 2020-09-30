@@ -2,7 +2,7 @@ import {parse as HTMLParser} from "fast-html-parser";
 import { BriefExam, Subject } from "../types/paper";
 import api from "../api";
 
-const getGeneratedExam = async (): Promise<BriefExam[]> => {
+const getCreatedExam = async (): Promise<BriefExam[]> => {
   const fetched = await api.html("/StudentStudy/TestListList");
   return (fetched.querySelectorAll("#TestList-table tbody tr").map((exam) => {
     const [, , , , , subject, , examTitle, , questionQuantity, , , , , , , , , , , , startedAt] = exam
@@ -19,4 +19,4 @@ const getGeneratedExam = async (): Promise<BriefExam[]> => {
   }));
 };
 
-export default getGeneratedExam;
+export default getCreatedExam;
