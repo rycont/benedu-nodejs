@@ -52,3 +52,8 @@ getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
 
 # Contributor
 [RyCont](https://github.com/rycont)
+
+# To-Do
+- [ ]: Create new exam
+- [ ]: Benedu2020 Coverage 100%
+- [ ]: Deno Port
