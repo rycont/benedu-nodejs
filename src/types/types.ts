@@ -1,7 +1,7 @@
 import { Subject } from "./enums";
 
 export type BriefExam = Partial<{
-    subject: keyof Subject;
+    subject: keyof typeof Subject;
     register: string;
     questionQuantity: number;
     endedAt: Date;

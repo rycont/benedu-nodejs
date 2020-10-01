@@ -1,7 +1,6 @@
-
-import HTMLParser from "fast-html-parser";
-import { BriefExam, Subject } from "../types/paper";
+import { BriefExam } from "../types/types";
 import api from "../api";
+import { Subject } from "../types/enums";
 
 const getTaskExamList = async (): Promise<BriefExam[]> => {
   const fetched = await api.html("/StudentStudy/TaskListList");
@@ -17,7 +16,7 @@ const getTaskExamList = async (): Promise<BriefExam[]> => {
         endedAt,
       ] = paper.childNodes.map((e) => e.rawText.trim());
       return {
-        subject: subject as Subject,
+        subject: subject as keyof typeof Subject,
         register,
         examTitle,
         questionQuantity: Number(questionQuantity),
