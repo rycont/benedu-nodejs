@@ -1,11 +1,22 @@
 # benedu-nodejs
 Do Something Fun🤣, Based on Benedu2020
 
-# What can it do
+# How to use
+**Recomment to store credential with dotenv**
+```typescript
+import getUserToken from './auth/getUserToken'
+import getTaskExamList from './exam/getTaskExamList'
+(async () => {
+  await getUserToken('username', 'password')
+  console.log(await getTaskExamList()) // Print 과제
+})()
+```
+
+# Functions
 ## Get Task Exams
 ```typescript
-import getCreatedExam from './exam/getCreatedExam'
-getCreatedExam().then(console.log)
+import getTaskExamList from './exam/getTaskExamList'
+getTaskExamList().then(console.log)
 ```
 ```
 [
@@ -25,8 +36,8 @@ getCreatedExam().then(console.log)
 
 ## Get Created Exam(문제은행)
 ```typescript
-import getTaskExamList from './exam/getTaskExamList'
-getTaskExamList().then(console.log)
+import getCreatedExam from './exam/getCreatedExam'
+getCreatedExam().then(console.log)
 ```
 ```
 [
