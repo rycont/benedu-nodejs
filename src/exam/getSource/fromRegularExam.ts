@@ -1,9 +1,9 @@
 import api from "../../api";
+import { CreationSource, RegularExamSource } from "../../classes/creationSource";
 import { Grade, Subject, Year } from "../../types/enums";
+import { concat } from "../../utils";
 
-const concat = (key: string, dict: { [x: string]: string; }) => dict[key] + '|' + key
-
-const fromRegularExam = async (subject: keyof typeof Subject, grade: keyof typeof Grade, year: keyof typeof Year) =>
+const fromRegularExam = async (subject: keyof typeof Subject, grade: keyof typeof Grade, year: keyof typeof Year): Promise<RegularExamSource[]> =>
   (await api.html('/StudentStudy/SearchResultList', {
     selectedSubject: concat(subject, Subject),
     checkedQuestionGrade: concat(grade, Grade),
@@ -11,12 +11,13 @@ const fromRegularExam = async (subject: keyof typeof Subject, grade: keyof typeo
     SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}"
   })).querySelectorAll('#MockTestList-table tbody tr').map(e => {
     const [, , , sourceSubject, , sourceTitle, , , , sourceGrade] = e.childNodes.map(e => e.childNodes?.[0].rawText)
-    return {
-      subject: sourceSubject.trim(),
-      sourceTitle: sourceTitle.trim(),
-      grade: +sourceGrade,
-      sourceId: e.childNodes?.[11].childNodes[1].attributes.eId
-    }
+    return new RegularExamSource(
+      sourceTitle.trim(),
+      sourceSubject.trim() as keyof typeof Subject,
+      sourceGrade.trim() + "학년" as keyof typeof Grade,
+      e.childNodes?.[11].childNodes[1].attributes.eId,
+      year
+    )
   })
 
 
