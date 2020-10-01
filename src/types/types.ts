@@ -1,7 +1,7 @@
-export type Subject = |"전체"|"국어"|"수학"|"영어"|"한국사"|"물리1"|"화학1"|"통합과학"|"공업일반"|"기초제도"|"회계원리"|"상업경제"|"통합사회"
+import { Subject } from "./enums";
 
 export type BriefExam = Partial<{
-    subject: Subject;
+    subject: keyof Subject;
     register: string;
     questionQuantity: number;
     endedAt: Date;
