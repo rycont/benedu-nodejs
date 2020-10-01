@@ -13,7 +13,7 @@ import getTaskExamList from './exam/getTaskExamList'
 ```
 
 # Functions
-## Get Task Exams
+## 과제 불러오기
 ```typescript
 import getTaskExamList from './exam/getTaskExamList'
 getTaskExamList().then(console.log)
@@ -34,7 +34,7 @@ getTaskExamList().then(console.log)
 ]
 ```
 
-## Get Created Exam(문제은행)
+## 등록된 문제은행 불러오기
 ```typescript
 import getCreatedExam from './exam/getCreatedExam'
 getCreatedExam().then(console.log)
@@ -51,21 +51,41 @@ getCreatedExam().then(console.log)
 ]
 ```
 
-## Get Before Regular Exam
+## 이전 지필고사 정보 불러오기
 ```typescript
-import fromRegularExam from './exam/create/fromRegularExam'
+import fromRegularExam from './exam/getSource/fromRegularExam'
 fromRegularExam('국어', '1학년', '2019년').then(console.log)
 ```
 ```
 [
-  {
-    subject: '국어',
-    sourceTitle: '2019년 2학기 2차(기말) 지필고사 (1학년)',
-    grade: 1,
-    sourceId: 'G6DLLX0uKrThLpCTaeMKjQ{e}{e}'
-  }...
+  RegularExamSource {
+    title: '2020년 4월 디미고 모의고사 지필고사 (1학년)',
+    subject: '수학',
+    grade: '1학년',
+    sourceId: 'XeCsqs{s}RWR9llJcUgH{s}Tww{e}{e}',
+    year: '2020년'
+  } ...
 ]
 ```
+
+## 지필고사에서 문제은행 등록하기
+```typescript
+import getUserToken from './auth/getUserToken'
+import getBeforeRegularExam from './exam/getSource/fromRegularExam'
+
+(async () => {
+  const regularExams = await getBeforeRegularExam('수학', '1학년', '2019년')
+  console.log(await regularExams[0].register('2020년 1학년 수학 지필고사'))
+})()
+```
+```
+{
+  examId: '7ZCa40{p}9IMR5Otll{p}zgONA{e}{e}',
+  examTitle: '2020년 1학년 수학 지필고사',
+  questionQuantity: 20
+}
+```
+![](./docs/image/regular_exam_register_demo.png)
 # Contributor
 [RyCont](https://github.com/rycont)
 
