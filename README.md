@@ -4,13 +4,8 @@ Do Something Fun🤣, Based on Benedu2020
 # What can it do
 ## Get Task Exams
 ```typescript
-import getUserToken from './auth/getUserToken'
-import getEnv from './env'
 import getCreatedExam from './exam/getCreatedExam'
-
-getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
-  .then(() => getCreatedExam())
-  .then(console.log)
+getCreatedExam().then(console.log)
 ```
 ```
 [
@@ -30,13 +25,8 @@ getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
 
 ## Get Created Exam(문제은행)
 ```typescript
-import getUserToken from './auth/getUserToken'
 import getTaskExamList from './exam/getTaskExamList'
-import getEnv from './env'
-
-getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
-  .then(() => getTaskExamList())
-  .then(console.log)
+getTaskExamList().then(console.log)
 ```
 ```
 [
@@ -50,6 +40,21 @@ getUserToken(getEnv('EMAIL'), getEnv('PASSWORD'))
 ]
 ```
 
+## Get Before Regular Exam
+```typescript
+import fromRegularExam from './exam/create/fromRegularExam'
+fromRegularExam('국어', '1학년', '2019년').then(console.log)
+```
+```
+[
+  {
+    subject: '국어',
+    sourceTitle: '2019년 2학기 2차(기말) 지필고사 (1학년)',
+    grade: 1,
+    sourceId: 'G6DLLX0uKrThLpCTaeMKjQ{e}{e}'
+  }...
+]
+```
 # Contributor
 [RyCont](https://github.com/rycont)
 
