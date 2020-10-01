@@ -24,10 +24,8 @@ const getUserToken = async (username: string, password: string, type: |2 = 2): P
   }))
   const fetchedText = await fetched.text()
   const fetchedToken = fetched.headers.get('set-cookie')?.split('Id=')[1].split('; ')[0]
-  
-  if (fetchedToken) token = fetchedToken
   if(!fetchedToken) throw new Error(HTMLParser(fetchedText).querySelectorAll('.login-field span')[3].childNodes[0].rawText || "Cannot get token")
-  
+  token = fetchedToken
   return fetchedToken
 }
 
