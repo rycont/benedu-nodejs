@@ -39,3 +39,7 @@ export enum Year {
   "2020년" = "2o3kGJw0R4mxBN6cV7Ns9A{e}{e}",
   "전체" = "R2{s}R7nLXJ0Qg80Y4LfENgQ{e}{e}",
 }
+
+export enum Source {
+  "지필고사" = "1kgtweldZXNlpurMszZ72w{e}{e}"
+}
