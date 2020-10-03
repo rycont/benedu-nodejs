@@ -43,3 +43,9 @@ export enum Year {
 export enum Source {
   "지필고사" = "1kgtweldZXNlpurMszZ72w{e}{e}"
 }
+
+export enum SolvingStatus {
+  "RX7CEmFfgzL6gqCunDqojQ{e}{e}" = "미 응시",
+  "ymWuGYYSOfmJLRPkt3xlfw{e}{e}" = "응시중",
+  "qlsPgUs{s}pzrJXatST3V3RA{e}{e}" = "응시 완료"
+}

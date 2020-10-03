@@ -1,4 +1,4 @@
-import { Subject } from "./enums";
+import { SolvingStatus, Subject } from "./enums";
 
 export type BriefExam = Partial<{
     subject: keyof typeof Subject;
@@ -9,6 +9,7 @@ export type BriefExam = Partial<{
     originFrom?: string;
     startedAt: Date;
     rightQuantity?: number;
+    solvingStatus?: SolvingStatus;
 }> & {
   examId: string;
   examTitle: string;
@@ -69,7 +70,7 @@ export type Paper = {
     IBT_PRINT_TYPE: string;
   };
 
-export type renderedPDF ={
-    pdf: string;
-    thumbnail: string;
-  }
+export interface renderedPDF {
+  pdf: string;
+  thumbnail: string;
+}
