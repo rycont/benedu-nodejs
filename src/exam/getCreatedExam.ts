@@ -3,7 +3,7 @@ import { BriefExam } from "../types/types";
 import api from "../api";
 import { Subject } from "../types/enums";
 
-const getCreatedExam = async (token?: string): Promise<BriefExam[]> => {
+const getCreatedExam = async ({token} : {token?: string} = {}): Promise<BriefExam[]> => {
   const fetched = await api.html("/StudentStudy/TestListList", undefined, token);
   return (fetched.querySelectorAll("#TestList-table tbody tr").map((exam) => {
     const [, , , , , subject, , examTitle, , questionQuantity, , , , , , , , , , , , startedAt] = exam

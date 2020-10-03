@@ -10,7 +10,7 @@ interface Args {
   sourceId: string;
   sourceType: keyof typeof Source;
   examTitle: string;
-  providedToken: string;
+  providedToken?: string;
 }
 
 const registerSource = async ({

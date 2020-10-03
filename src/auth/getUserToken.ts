@@ -5,11 +5,15 @@ import { fetch } from '../api';
 
 export let token: string
 
-const getUserToken = async (username: string, password: string, type: |2 = 2): Promise<string> => {
+interface Args {
+  username: string;
+  password: string;
+  type?: |2;
+}
+
+const getUserToken = async ({username, password, type = 2} : Args): Promise<string> => {
   if (token) return token
   const { inputToken, cookieToken } = await getRVT()
-  var myHeaders = new Headers();
-  myHeaders.append("Cookie", `__RequestVerificationToken=${cookieToken};`); 
     
   var formdata = new FormData();
   formdata.append("__RequestVerificationToken", inputToken);
@@ -18,7 +22,9 @@ const getUserToken = async (username: string, password: string, type: |2 = 2): P
   formdata.append("loginGB", type);
   const fetched = (await fetch("http://benedu.co.kr/Home/Login", {
     method: 'POST',
-    headers: myHeaders,
+    headers: {
+      "Cookie": `__RequestVerificationToken=${cookieToken};`
+    },
     body: formdata as unknown as string,
     redirect: 'manual'
   }))

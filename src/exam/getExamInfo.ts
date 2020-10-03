@@ -1,6 +1,6 @@
 import api from "../api"
 
-const getExamInfo = async (examId: string, providedToken?: string) => 
+const getExamInfo = async ({examId, providedToken} : {examId: string, providedToken?: string}) => 
 await api.json('/Utils/TestPrint', {
     type: 'ymWuGYYSOfmJLRPkt3xlfw{e}{e}',
     "values[]": examId

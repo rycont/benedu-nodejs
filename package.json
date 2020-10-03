@@ -4,7 +4,7 @@
   "description": "Unofficial Benedu API NodeJS Wrapper",
   "main": "./dist/",
   "scripts": {
-    "test": "ts-node ./src"
+    "test": "ts-node ./"
   },
   "keywords": [
     "benedu",
