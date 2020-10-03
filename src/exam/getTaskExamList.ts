@@ -2,8 +2,8 @@ import { BriefExam } from "../types/types";
 import api from "../api";
 import { Subject } from "../types/enums";
 
-const getTaskExamList = async (): Promise<BriefExam[]> => {
-  const fetched = await api.html("/StudentStudy/TaskListList");
+const getTaskExamList = async (providedToken?: string): Promise<BriefExam[]> => {
+  const fetched = await api.html("/StudentStudy/TaskListList", undefined, providedToken);
   return fetched.querySelectorAll("#TaskList-table tbody tr")
     .map((paper) => {
       const [,,, , ,

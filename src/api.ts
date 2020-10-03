@@ -1,40 +1,40 @@
 import { parse as HTMLParser } from "fast-html-parser";
 import { token } from "./auth/getUserToken"
 import FormData from 'form-data'
-import getEnv from "./env"
+import { API_URI } from "./constants";
 
-let fetch: any
+export let fetch: any
 
 export const setFetch = (f: any) => fetch = f
 
 export default {
-  async get(uri: string, formdata?: FormData) {
-    return await fetch(getEnv('API_URI') + uri, {
+  async get(uri: string, formdata?: FormData, providedToken?: string) {
+    return await fetch(API_URI + uri, {
       body: formdata,
       headers: {
         ...(formdata && formdata.getHeaders()),
-        Cookie: `ASP.NET_SessionId=${token}`
+        Cookie: `ASP.NET_SessionId=${providedToken || token}`
       },
       method: 'POST'
     })
   },
   async text(uri: string, config?: {
     [key: string]: string
-  }) {
+  }, providedToken?: string) {
     console.log(uri, config)
-    if (!config) return (await this.get(uri)).text()
+    if (!config) return (await this.get(uri, undefined, providedToken)).text()
     const formdata = new FormData()
     Object.entries(config).forEach(([key, value]) => formdata.append(key, value))
-    return await (await this.get(uri, formdata)).text()
+    return await (await this.get(uri, formdata, providedToken)).text()
   },
   async html(uri: string, config?: {
     [key: string]: string
-  }) {
-    return HTMLParser(await this.text(uri, config))
+  }, providedToken?: string) {
+    return HTMLParser(await this.text(uri, config, providedToken))
   },
   async json(uri: string, config?: {
     [key: string]: string
-  }) {
-    return JSON.parse(await this.text(uri, config))
+  }, providedToken?: string) {
+    return JSON.parse(await this.text(uri, config, providedToken))
   }
 }

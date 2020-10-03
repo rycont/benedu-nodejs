@@ -1,7 +1,7 @@
-import fetch, { Headers, } from 'node-fetch'
 import FormData from 'form-data'
 import {parse as HTMLParser} from 'fast-html-parser';
 import getRVT from "./getRVT"
+import { fetch } from '../api';
 
 export let token: string
 

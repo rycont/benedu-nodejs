@@ -3,13 +3,13 @@ import { CreationSource, RegularExamSource } from "../../classes/creationSource"
 import { Grade, Subject, Year } from "../../types/enums";
 import { concat } from "../../utils";
 
-const fromRegularExam = async (subject: keyof typeof Subject, grade: keyof typeof Grade, year: keyof typeof Year): Promise<RegularExamSource[]> =>
+const fromRegularExam = async (subject: keyof typeof Subject, grade: keyof typeof Grade, year: keyof typeof Year, providedToken?: string): Promise<RegularExamSource[]> =>
   (await api.html('/StudentStudy/SearchResultList', {
     selectedSubject: concat(subject, Subject),
     checkedQuestionGrade: concat(grade, Grade),
     inputQuestionYear: Year[year] + '|' + Year[year],
     SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}"
-  })).querySelectorAll('#MockTestList-table tbody tr').map(e => {
+  }, providedToken)).querySelectorAll('#MockTestList-table tbody tr').map(e => {
     const [, , , sourceSubject, , sourceTitle, , , , sourceGrade] = e.childNodes.map(e => e.childNodes?.[0].rawText)
     return new RegularExamSource(
       sourceTitle.trim(),

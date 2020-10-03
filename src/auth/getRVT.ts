@@ -1,5 +1,5 @@
-import fetch from "node-fetch";
 import {parse as HTMLParser} from 'fast-html-parser';
+import { fetch } from '../api';
 
 async function getRVT() {
   const fetched = (await fetch("http://benedu.co.kr/"))
