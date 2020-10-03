@@ -10,6 +10,7 @@ interface Args {
   sourceId: string;
   sourceType: keyof typeof Source;
   examTitle: string;
+  providedToken: string;
 }
 
 const registerSource = async ({
@@ -18,7 +19,8 @@ const registerSource = async ({
   sourceType,
   sourceId,
   grade,
-  examTitle
+  examTitle,
+  providedToken
 } : Args): Promise<BriefExam> => 
 {
   const registered = (await api.json('/StudentStudy/SearchResultListSave', {
