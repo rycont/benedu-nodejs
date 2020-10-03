@@ -21,8 +21,7 @@ const registerSource = async ({
   grade,
   examTitle,
   providedToken
-} : Args): Promise<BriefExam> => 
-{
+}: Args): Promise<BriefExam> => {
   const registered = (await api.json('/StudentStudy/SearchResultListSave', {
     selectedSubject: concat(subject, Subject),
     selectedId: sourceId,
@@ -32,7 +31,7 @@ const registerSource = async ({
     inputQuestionYear: Year[year] + '|' + Year[year],
     inputIbtName: examTitle,
     SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}",
-  }))[0] as {
+  }, providedToken))[0] as {
     IBT_ID: string;
     SBJ_CODE: string
     SBJ_NAME: string
