@@ -44,21 +44,19 @@ var form_data_1 = __importDefault(require("form-data"));
 var fast_html_parser_1 = require("fast-html-parser");
 var getRVT_1 = __importDefault(require("./getRVT"));
 var api_1 = require("../api");
-var getUserToken = function (username, password, type) {
-    if (type === void 0) { type = 2; }
+var getUserToken = function (_a) {
+    var username = _a.username, password = _a.password, _b = _a.type, type = _b === void 0 ? 2 : _b;
     return __awaiter(void 0, void 0, void 0, function () {
-        var _a, inputToken, cookieToken, myHeaders, formdata, fetched, fetchedText, fetchedToken;
-        var _b;
-        return __generator(this, function (_c) {
-            switch (_c.label) {
+        var _c, inputToken, cookieToken, formdata, fetched, fetchedText, fetchedToken;
+        var _d;
+        return __generator(this, function (_e) {
+            switch (_e.label) {
                 case 0:
                     if (exports.token)
                         return [2 /*return*/, exports.token];
                     return [4 /*yield*/, getRVT_1.default()];
                 case 1:
-                    _a = _c.sent(), inputToken = _a.inputToken, cookieToken = _a.cookieToken;
-                    myHeaders = new Headers();
-                    myHeaders.append("Cookie", "__RequestVerificationToken=" + cookieToken + ";");
+                    _c = _e.sent(), inputToken = _c.inputToken, cookieToken = _c.cookieToken;
                     formdata = new form_data_1.default();
                     formdata.append("__RequestVerificationToken", inputToken);
                     formdata.append("loginID", username);
@@ -66,16 +64,18 @@ var getUserToken = function (username, password, type) {
                     formdata.append("loginGB", type);
                     return [4 /*yield*/, api_1.fetch("http://benedu.co.kr/Home/Login", {
                             method: 'POST',
-                            headers: myHeaders,
+                            headers: {
+                                "Cookie": "__RequestVerificationToken=" + cookieToken + ";"
+                            },
                             body: formdata,
                             redirect: 'manual'
                         })];
                 case 2:
-                    fetched = (_c.sent());
+                    fetched = (_e.sent());
                     return [4 /*yield*/, fetched.text()];
                 case 3:
-                    fetchedText = _c.sent();
-                    fetchedToken = (_b = fetched.headers.get('set-cookie')) === null || _b === void 0 ? void 0 : _b.split('Id=')[1].split('; ')[0];
+                    fetchedText = _e.sent();
+                    fetchedToken = (_d = fetched.headers.get('set-cookie')) === null || _d === void 0 ? void 0 : _d.split('Id=')[1].split('; ')[0];
                     if (!fetchedToken)
                         throw new Error(fast_html_parser_1.parse(fetchedText).querySelectorAll('.login-field span')[3].childNodes[0].rawText || "Cannot get token");
                     exports.token = fetchedToken;

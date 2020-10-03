@@ -40,34 +40,37 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = __importDefault(require("../api"));
-var getTaskExamList = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var fetched;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, api_1.default.html("/StudentStudy/TaskListList")];
-            case 1:
-                fetched = _a.sent();
-                return [2 /*return*/, fetched.querySelectorAll("#TaskList-table tbody tr")
-                        .map(function (paper) {
-                        var _a = paper.childNodes.map(function (e) { return e.rawText.trim(); }), subject = _a[5], register = _a[7], examTitle = _a[9], questionQuantity = _a[11], solvedQuantity = _a[15], startedAt = _a[23], endedAt = _a[25];
-                        return {
-                            subject: subject,
-                            register: register,
-                            examTitle: examTitle,
-                            questionQuantity: Number(questionQuantity),
-                            solvedQuantity: Number(solvedQuantity),
-                            state: {
-                                "RX7CEmFfgzL6gqCunDqojQ{e}{e}": "미 응시",
-                                "ymWuGYYSOfmJLRPkt3xlfw{e}{e}": "응시중",
-                                "qlsPgUs{s}pzrJXatST3V3RA{e}{e}": "응시 완료",
-                            }[paper.attributes.sts],
-                            endedAt: new Date(endedAt),
-                            startedAt: new Date(startedAt),
-                            examId: paper.attributes.value,
-                        };
-                    })
-                        .filter(function (e) { return e.solvedQuantity !== e.questionQuantity; })];
-        }
+var getTaskExamList = function (_a) {
+    var providedToken = _a.providedToken;
+    return __awaiter(void 0, void 0, void 0, function () {
+        var fetched;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, api_1.default.html("/StudentStudy/TaskListList", undefined, providedToken)];
+                case 1:
+                    fetched = _b.sent();
+                    return [2 /*return*/, fetched.querySelectorAll("#TaskList-table tbody tr")
+                            .map(function (paper) {
+                            var _a = paper.childNodes.map(function (e) { return e.rawText.trim(); }), subject = _a[5], register = _a[7], examTitle = _a[9], questionQuantity = _a[11], solvedQuantity = _a[15], startedAt = _a[23], endedAt = _a[25];
+                            return {
+                                subject: subject,
+                                register: register,
+                                examTitle: examTitle,
+                                questionQuantity: Number(questionQuantity),
+                                solvedQuantity: Number(solvedQuantity),
+                                state: {
+                                    "RX7CEmFfgzL6gqCunDqojQ{e}{e}": "미 응시",
+                                    "ymWuGYYSOfmJLRPkt3xlfw{e}{e}": "응시중",
+                                    "qlsPgUs{s}pzrJXatST3V3RA{e}{e}": "응시 완료",
+                                }[paper.attributes.sts],
+                                endedAt: new Date(endedAt),
+                                startedAt: new Date(startedAt),
+                                examId: paper.attributes.value,
+                            };
+                        })
+                            .filter(function (e) { return e.solvedQuantity !== e.questionQuantity; })];
+            }
+        });
     });
-}); };
+};
 exports.default = getTaskExamList;

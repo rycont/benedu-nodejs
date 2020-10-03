@@ -57,13 +57,13 @@ var form_data_1 = __importDefault(require("form-data"));
 var constants_1 = require("./constants");
 exports.setFetch = function (f) { return exports.fetch = f; };
 exports.default = {
-    get: function (uri, formdata) {
+    get: function (uri, formdata, providedToken) {
         return __awaiter(this, void 0, void 0, function () {
             return __generator(this, function (_a) {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, exports.fetch(constants_1.API_URI + uri, {
                             body: formdata,
-                            headers: __assign(__assign({}, (formdata && formdata.getHeaders())), { Cookie: "ASP.NET_SessionId=" + getUserToken_1.token }),
+                            headers: __assign(__assign({}, (formdata && formdata.getHeaders())), { Cookie: "ASP.NET_SessionId=" + (providedToken || getUserToken_1.token) }),
                             method: 'POST'
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
@@ -71,7 +71,7 @@ exports.default = {
             });
         });
     },
-    text: function (uri, config) {
+    text: function (uri, config, providedToken) {
         return __awaiter(this, void 0, void 0, function () {
             var formdata;
             return __generator(this, function (_a) {
@@ -79,7 +79,7 @@ exports.default = {
                     case 0:
                         console.log(uri, config);
                         if (!!config) return [3 /*break*/, 2];
-                        return [4 /*yield*/, this.get(uri)];
+                        return [4 /*yield*/, this.get(uri, undefined, providedToken)];
                     case 1: return [2 /*return*/, (_a.sent()).text()];
                     case 2:
                         formdata = new form_data_1.default();
@@ -87,34 +87,34 @@ exports.default = {
                             var key = _a[0], value = _a[1];
                             return formdata.append(key, value);
                         });
-                        return [4 /*yield*/, this.get(uri, formdata)];
+                        return [4 /*yield*/, this.get(uri, formdata, providedToken)];
                     case 3: return [4 /*yield*/, (_a.sent()).text()];
                     case 4: return [2 /*return*/, _a.sent()];
                 }
             });
         });
     },
-    html: function (uri, config) {
+    html: function (uri, config, providedToken) {
         return __awaiter(this, void 0, void 0, function () {
             var _a;
             return __generator(this, function (_b) {
                 switch (_b.label) {
                     case 0:
                         _a = fast_html_parser_1.parse;
-                        return [4 /*yield*/, this.text(uri, config)];
+                        return [4 /*yield*/, this.text(uri, config, providedToken)];
                     case 1: return [2 /*return*/, _a.apply(void 0, [_b.sent()])];
                 }
             });
         });
     },
-    json: function (uri, config) {
+    json: function (uri, config, providedToken) {
         return __awaiter(this, void 0, void 0, function () {
             var _a, _b;
             return __generator(this, function (_c) {
                 switch (_c.label) {
                     case 0:
                         _b = (_a = JSON).parse;
-                        return [4 /*yield*/, this.text(uri, config)];
+                        return [4 /*yield*/, this.text(uri, config, providedToken)];
                     case 1: return [2 /*return*/, _b.apply(_a, [_c.sent()])];
                 }
             });

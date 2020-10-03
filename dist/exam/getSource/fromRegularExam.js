@@ -43,21 +43,30 @@ var api_1 = __importDefault(require("../../api"));
 var creationSource_1 = require("../../classes/creationSource");
 var enums_1 = require("../../types/enums");
 var utils_1 = require("../../utils");
-var fromRegularExam = function (subject, grade, year) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, api_1.default.html('/StudentStudy/SearchResultList', {
-                    selectedSubject: utils_1.concat(subject, enums_1.Subject),
-                    checkedQuestionGrade: utils_1.concat(grade, enums_1.Grade),
-                    inputQuestionYear: enums_1.Year[year] + '|' + enums_1.Year[year],
-                    SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}"
-                })];
-            case 1: return [2 /*return*/, (_a.sent()).querySelectorAll('#MockTestList-table tbody tr').map(function (e) {
-                    var _a;
-                    var _b = e.childNodes.map(function (e) { var _a; return (_a = e.childNodes) === null || _a === void 0 ? void 0 : _a[0].rawText; }), sourceSubject = _b[3], sourceTitle = _b[5], sourceGrade = _b[9];
-                    return new creationSource_1.RegularExamSource(sourceTitle.trim(), sourceSubject.trim(), sourceGrade.trim() + "학년", (_a = e.childNodes) === null || _a === void 0 ? void 0 : _a[11].childNodes[1].attributes.eId, year);
-                })];
-        }
+var fromRegularExam = function (_a) {
+    var subject = _a.subject, grade = _a.grade, year = _a.year, providedToken = _a.providedToken;
+    return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, api_1.default.html('/StudentStudy/SearchResultList', {
+                        selectedSubject: utils_1.concat(subject, enums_1.Subject),
+                        checkedQuestionGrade: utils_1.concat(grade, enums_1.Grade),
+                        inputQuestionYear: enums_1.Year[year] + '|' + enums_1.Year[year],
+                        SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}"
+                    }, providedToken)];
+                case 1: return [2 /*return*/, (_b.sent()).querySelectorAll('#MockTestList-table tbody tr').map(function (e) {
+                        var _a;
+                        var _b = e.childNodes.map(function (e) { var _a; return (_a = e.childNodes) === null || _a === void 0 ? void 0 : _a[0].rawText; }), sourceSubject = _b[3], sourceTitle = _b[5], sourceGrade = _b[9];
+                        return new creationSource_1.RegularExamSource({
+                            title: sourceTitle.trim(),
+                            subject: sourceSubject.trim(),
+                            grade: sourceGrade.trim() + "학년",
+                            sourceId: (_a = e.childNodes) === null || _a === void 0 ? void 0 : _a[11].childNodes[1].attributes.eId,
+                            year: year
+                        });
+                    })];
+            }
+        });
     });
-}); };
+};
 exports.default = fromRegularExam;

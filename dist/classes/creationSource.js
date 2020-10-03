@@ -19,7 +19,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.RegularExamSource = exports.CreationSource = void 0;
 var registerSource_1 = __importDefault(require("../exam/registerSource"));
 var CreationSource = /** @class */ (function () {
-    function CreationSource(title, subject, grade, sourceId) {
+    function CreationSource(_a) {
+        var title = _a.title, subject = _a.subject, grade = _a.grade, sourceId = _a.sourceId;
         this.title = title;
         this.subject = subject;
         this.grade = grade;
@@ -30,8 +31,9 @@ var CreationSource = /** @class */ (function () {
 exports.CreationSource = CreationSource;
 var RegularExamSource = /** @class */ (function (_super) {
     __extends(RegularExamSource, _super);
-    function RegularExamSource(title, subject, grade, sourceId, year) {
-        var _this = _super.call(this, title, subject, grade, sourceId) || this;
+    function RegularExamSource(_a) {
+        var title = _a.title, subject = _a.subject, grade = _a.grade, sourceId = _a.sourceId, year = _a.year;
+        var _this = _super.call(this, { title: title, subject: subject, grade: grade, sourceId: sourceId }) || this;
         _this.year = year;
         return _this;
     }

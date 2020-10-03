@@ -7,6 +7,7 @@ interface Args {
     sourceId: string;
     sourceType: keyof typeof Source;
     examTitle: string;
+    providedToken?: string;
 }
-declare const registerSource: ({ year, subject, sourceType, sourceId, grade, examTitle }: Args) => Promise<BriefExam>;
+declare const registerSource: ({ year, subject, sourceType, sourceId, grade, examTitle, providedToken }: Args) => Promise<BriefExam>;
 export default registerSource;

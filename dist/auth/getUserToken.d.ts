@@ -1,3 +1,8 @@
 export declare let token: string;
-declare const getUserToken: (username: string, password: string, type?: 2) => Promise<string>;
+interface Args {
+    username: string;
+    password: string;
+    type?: 2;
+}
+declare const getUserToken: ({ username, password, type }: Args) => Promise<string>;
 export default getUserToken;

@@ -40,15 +40,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = __importDefault(require("../api"));
-var getExamInfo = function (examId) { return __awaiter(void 0, void 0, void 0, function () {
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, api_1.default.json('/Utils/TestPrint', {
-                    type: 'ymWuGYYSOfmJLRPkt3xlfw{e}{e}',
-                    "values[]": examId
-                })];
-            case 1: return [2 /*return*/, _a.sent()];
-        }
+var getExamInfo = function (_a) {
+    var examId = _a.examId, providedToken = _a.providedToken;
+    return __awaiter(void 0, void 0, void 0, function () {
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, api_1.default.json('/Utils/TestPrint', {
+                        type: 'ymWuGYYSOfmJLRPkt3xlfw{e}{e}',
+                        "values[]": examId
+                    }, providedToken)];
+                case 1: return [2 /*return*/, _b.sent()];
+            }
+        });
     });
-}); };
+};
 exports.default = getExamInfo;

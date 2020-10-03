@@ -43,7 +43,7 @@ var api_1 = __importDefault(require("../api"));
 var enums_1 = require("../types/enums");
 var utils_1 = require("../utils");
 var registerSource = function (_a) {
-    var year = _a.year, subject = _a.subject, sourceType = _a.sourceType, sourceId = _a.sourceId, grade = _a.grade, examTitle = _a.examTitle;
+    var year = _a.year, subject = _a.subject, sourceType = _a.sourceType, sourceId = _a.sourceId, grade = _a.grade, examTitle = _a.examTitle, providedToken = _a.providedToken;
     return __awaiter(void 0, void 0, void 0, function () {
         var registered;
         return __generator(this, function (_b) {

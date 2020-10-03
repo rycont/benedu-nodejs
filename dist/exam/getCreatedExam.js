@@ -40,27 +40,30 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = __importDefault(require("../api"));
-var getCreatedExam = function () { return __awaiter(void 0, void 0, void 0, function () {
-    var fetched;
-    return __generator(this, function (_a) {
-        switch (_a.label) {
-            case 0: return [4 /*yield*/, api_1.default.html("/StudentStudy/TestListList")];
-            case 1:
-                fetched = _a.sent();
-                return [2 /*return*/, (fetched.querySelectorAll("#TestList-table tbody tr").map(function (exam) {
-                        var _a = exam
-                            .childNodes
-                            .map(function (e) { return e.rawText
-                            .trim(); }), subject = _a[5], examTitle = _a[7], questionQuantity = _a[9], startedAt = _a[21];
-                        return ({
-                            subject: subject,
-                            examTitle: examTitle,
-                            questionQuantity: +questionQuantity,
-                            startedAt: new Date(startedAt),
-                            examId: exam.attributes.value,
-                        });
-                    }))];
-        }
+var getCreatedExam = function (_a) {
+    var token = (_a === void 0 ? {} : _a).token;
+    return __awaiter(void 0, void 0, void 0, function () {
+        var fetched;
+        return __generator(this, function (_b) {
+            switch (_b.label) {
+                case 0: return [4 /*yield*/, api_1.default.html("/StudentStudy/TestListList", undefined, token)];
+                case 1:
+                    fetched = _b.sent();
+                    return [2 /*return*/, (fetched.querySelectorAll("#TestList-table tbody tr").map(function (exam) {
+                            var _a = exam
+                                .childNodes
+                                .map(function (e) { return e.rawText
+                                .trim(); }), subject = _a[5], examTitle = _a[7], questionQuantity = _a[9], startedAt = _a[21];
+                            return ({
+                                subject: subject,
+                                examTitle: examTitle,
+                                questionQuantity: +questionQuantity,
+                                startedAt: new Date(startedAt),
+                                examId: exam.attributes.value,
+                            });
+                        }))];
+            }
+        });
     });
-}); };
+};
 exports.default = getCreatedExam;
