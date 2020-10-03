@@ -1,4 +1,4 @@
-import { Subject } from "./enums";
+import { SolvingStatus, Subject } from "./enums";
 export declare type BriefExam = Partial<{
     subject: keyof typeof Subject;
     register: string;
@@ -8,6 +8,7 @@ export declare type BriefExam = Partial<{
     originFrom?: string;
     startedAt: Date;
     rightQuantity?: number;
+    solvingStatus?: SolvingStatus;
 }> & {
     examId: string;
     examTitle: string;
@@ -64,7 +65,7 @@ export declare type Paper = {
     UserName: string;
     IBT_PRINT_TYPE: string;
 };
-export declare type renderedPDF = {
+export interface renderedPDF {
     pdf: string;
     thumbnail: string;
-};
+}

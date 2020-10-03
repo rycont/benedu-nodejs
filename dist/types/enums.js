@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Source = exports.Year = exports.Grade = exports.Subject = void 0;
+exports.SolvingStatus = exports.Source = exports.Year = exports.Grade = exports.Subject = void 0;
 var Subject;
 (function (Subject) {
     Subject["\uC804\uCCB4"] = "R2{s}R7nLXJ0Qg80Y4LfENgQ{e}{e}";
@@ -47,3 +47,9 @@ var Source;
 (function (Source) {
     Source["\uC9C0\uD544\uACE0\uC0AC"] = "1kgtweldZXNlpurMszZ72w{e}{e}";
 })(Source = exports.Source || (exports.Source = {}));
+var SolvingStatus;
+(function (SolvingStatus) {
+    SolvingStatus["RX7CEmFfgzL6gqCunDqojQ{e}{e}"] = "\uBBF8 \uC751\uC2DC";
+    SolvingStatus["ymWuGYYSOfmJLRPkt3xlfw{e}{e}"] = "\uC751\uC2DC\uC911";
+    SolvingStatus["qlsPgUs{s}pzrJXatST3V3RA{e}{e}"] = "\uC751\uC2DC \uC644\uB8CC";
+})(SolvingStatus = exports.SolvingStatus || (exports.SolvingStatus = {}));

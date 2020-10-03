@@ -16,7 +16,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.RegularExamSource = exports.CreationSource = void 0;
+exports.RegularExamSource = void 0;
 var registerSource_1 = __importDefault(require("../exam/registerSource"));
 var CreationSource = /** @class */ (function () {
     function CreationSource(_a) {
@@ -28,7 +28,6 @@ var CreationSource = /** @class */ (function () {
     }
     return CreationSource;
 }());
-exports.CreationSource = CreationSource;
 var RegularExamSource = /** @class */ (function (_super) {
     __extends(RegularExamSource, _super);
     function RegularExamSource(_a) {
@@ -37,14 +36,16 @@ var RegularExamSource = /** @class */ (function (_super) {
         _this.year = year;
         return _this;
     }
-    RegularExamSource.prototype.register = function (title) {
+    RegularExamSource.prototype.register = function (_a) {
+        var title = _a.title, providedToken = _a.providedToken;
         return registerSource_1.default({
             year: this.year,
             subject: this.subject,
             sourceType: "지필고사",
             sourceId: this.sourceId,
             grade: this.grade,
-            examTitle: title || this.title
+            examTitle: title || this.title,
+            providedToken: providedToken
         });
     };
     return RegularExamSource;

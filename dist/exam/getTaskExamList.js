@@ -40,6 +40,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var api_1 = __importDefault(require("../api"));
+var enums_1 = require("../types/enums");
 var getTaskExamList = function (_a) {
     var providedToken = (_a === void 0 ? {} : _a).providedToken;
     return __awaiter(void 0, void 0, void 0, function () {
@@ -58,11 +59,7 @@ var getTaskExamList = function (_a) {
                                 examTitle: examTitle,
                                 questionQuantity: Number(questionQuantity),
                                 solvedQuantity: Number(solvedQuantity),
-                                state: {
-                                    "RX7CEmFfgzL6gqCunDqojQ{e}{e}": "미 응시",
-                                    "ymWuGYYSOfmJLRPkt3xlfw{e}{e}": "응시중",
-                                    "qlsPgUs{s}pzrJXatST3V3RA{e}{e}": "응시 완료",
-                                }[paper.attributes.sts],
+                                state: enums_1.SolvingStatus[paper.attributes.sts],
                                 endedAt: new Date(endedAt),
                                 startedAt: new Date(startedAt),
                                 examId: paper.attributes.value,

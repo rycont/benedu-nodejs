@@ -1,3 +1,4 @@
+import { BriefExam } from "../types/types";
 import { Grade, Subject, Year } from "../types/enums";
 interface CreationSourceArg {
     title: string;
@@ -5,12 +6,16 @@ interface CreationSourceArg {
     grade: keyof typeof Grade;
     sourceId: string;
 }
-export declare class CreationSource {
+declare abstract class CreationSource {
     title: string;
     subject: keyof typeof Subject;
     grade: keyof typeof Grade;
     sourceId: string;
     constructor({ title, subject, grade, sourceId }: CreationSourceArg);
+    abstract register({ title, providedToken }: {
+        title?: string;
+        providedToken?: string;
+    }): Promise<BriefExam> | BriefExam;
 }
 interface RegularExamSourceArg {
     title: string;
@@ -22,6 +27,9 @@ interface RegularExamSourceArg {
 export declare class RegularExamSource extends CreationSource {
     year: keyof typeof Year;
     constructor({ title, subject, grade, sourceId, year }: RegularExamSourceArg);
-    register(title?: string): Promise<import("../types/types").BriefExam>;
+    register({ title, providedToken }: {
+        title?: string;
+        providedToken?: string;
+    }): Promise<BriefExam>;
 }
 export {};

@@ -1,90 +1,95 @@
 # benedu-nodejs
 Do Something Fun🤣, Based on Benedu2020
 
-# How to use
-**Recomment to store credential with dotenv**
+# Example
 ```typescript
 import getUserToken from './auth/getUserToken'
 import getTaskExamList from './exam/getTaskExamList'
 (async () => {
-  await getUserToken('username', 'password')
+  await getUserToken({
+    username: 'username',
+    password: 'password'
+  })
   console.log(await getTaskExamList()) // Print 과제
 })()
 ```
-
-# Functions
-## 과제 불러오기
 ```typescript
 import getTaskExamList from './exam/getTaskExamList'
-getTaskExamList().then(console.log)
-```
-```
-[
-  {
-    subject: '영어',
-    register: 'MASKED',
-    examTitle: '2020년 9월  29일 화요일 1학년 영어 일일학습',
-    questionQuantity: 6,
-    solvedQuantity: 1,
-    state: '응시중',
-    endedAt: 2020-10-04T14:59:00.000Z,
-    startedAt: 2020-09-28T15:00:00.000Z,
-    examId: 'r660uc9In9GxtDVV8qPJmg{e}{e}'
-  }...
-]
+getTaskExamList({
+  providedToken: "ASPAUTHTOKEN"
+}).then(console.log)
 ```
 
-## 등록된 문제은행 불러오기
-```typescript
-import getCreatedExam from './exam/getCreatedExam'
-getCreatedExam().then(console.log)
-```
-```
-[
-  {
-    subject: '수학',
-    examTitle: '(2020-09-30 09:29) 베네듀학습 - 수학 [수의 이해]',
-    questionQuantity: 2,
-    startedAt: 2020-09-30T00:00:00.000Z,
-    examId: 'eMP7iqA7m5nkqmwDA8tVNw{e}{e}'
-  }...
-]
-```
+# Functions
+## login
+베네듀 계정으로 로그인하고 토큰을 반환합니다. 토큰은 모듈 내부에 임시적으로 저장됩니다.
+### Parameters
+|           key |      description |   type | optional |   |
+|--------------:|-----------------:|-------:|----------|---|
+| username | 이메일 | string |         |   |
+| password | 비밀번호 | string |         |   |
+### Return Type
+`Promise<string>`
 
-## 이전 지필고사 정보 불러오기
-```typescript
-import fromRegularExam from './exam/getSource/fromRegularExam'
-fromRegularExam('국어', '1학년', '2019년').then(console.log)
-```
-```
-[
-  RegularExamSource {
-    title: '2020년 4월 디미고 모의고사 지필고사 (1학년)',
-    subject: '수학',
-    grade: '1학년',
-    sourceId: 'XeCsqs{s}RWR9llJcUgH{s}Tww{e}{e}',
-    year: '2020년'
-  } ...
-]
-```
+## getTaskExamList
+과제 목록을 반환합니다
 
-## 지필고사에서 문제은행 등록하기
-```typescript
-import getUserToken from './auth/getUserToken'
-import getBeforeRegularExam from './exam/getSource/fromRegularExam'
+### Parameters
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+| providedToken | 사용자 지정 토큰 | string | Y        |
 
-(async () => {
-  const regularExams = await getBeforeRegularExam('수학', '1학년', '2019년')
-  console.log(await regularExams[0].register('2020년 1학년 수학 지필고사'))
-})()
-```
-```
-{
-  examId: '7ZCa40{p}9IMR5Otll{p}zgONA{e}{e}',
-  examTitle: '2020년 1학년 수학 지필고사',
-  questionQuantity: 20
-}
-```
+### Return Type
+`Promise<BriefExam[]>`
+
+## getCreatedExam
+생성된 문제은행 시험지를 반환합니다
+### Parameters
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+| providedToken | 사용자 지정 토큰 | string | Y        |
+### Return Type
+`Promise<BriefExam[]>`
+
+## getBeforeRegularExam
+이전 지필고사 정보를 반환합니다
+### Parameters
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+| subject | 과목코드 | Subject | N        |
+|grade|학년코드|Grade|N|
+|year|연도코드|Year|N|
+| providedToken | 사용자 지정 토큰 | string | Y        |
+### Return Type
+`Promise<RegularExamSource[]>`
+
+# Classes
+## CreationSource
+문제은행의 원본이 되는 시험지의 정보를 담습니다
+### Fields
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+| title | 소스 이름 | string | N        |
+|subject|과목코드|Subject|N|
+|grade|연도코드|Grade|N|
+| sourceId | 사용자 지정 토큰 | string | Y        |
+### Methods
+#### register
+##### Parameters
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+| title | 등록할 이름 | string | Y        |
+| providedToken | 사용자 지정 토큰 | string | Y        |
+##### Return Type
+`Promise<BriefExam[]>`
+### Subclasses
+#### RegularExamSource
+이전 지필고사 정보를 담는 클래스입니다
+##### Additional
+|           key |      description |   type | optional |
+|--------------:|-----------------:|-------:|----------|
+|year|연도코드|Year|N|
+
 ![](./docs/image/regular_exam_register_demo.png)
 # Contributor
 [RyCont](https://github.com/rycont)

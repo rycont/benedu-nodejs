@@ -40,3 +40,8 @@ export declare enum Year {
 export declare enum Source {
     "지필고사" = "1kgtweldZXNlpurMszZ72w{e}{e}"
 }
+export declare enum SolvingStatus {
+    "RX7CEmFfgzL6gqCunDqojQ{e}{e}" = "\uBBF8 \uC751\uC2DC",
+    "ymWuGYYSOfmJLRPkt3xlfw{e}{e}" = "\uC751\uC2DC\uC911",
+    "qlsPgUs{s}pzrJXatST3V3RA{e}{e}" = "\uC751\uC2DC \uC644\uB8CC"
+}

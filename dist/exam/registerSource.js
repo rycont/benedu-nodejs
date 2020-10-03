@@ -57,7 +57,7 @@ var registerSource = function (_a) {
                         inputQuestionYear: enums_1.Year[year] + '|' + enums_1.Year[year],
                         inputIbtName: examTitle,
                         SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}",
-                    })];
+                    }, providedToken)];
                 case 1:
                     registered = (_b.sent())[0];
                     return [2 /*return*/, {
