@@ -1,13 +1,13 @@
 {
-  "name": "redcombo",
+  "name": "benedu-nodejs",
   "version": "1.0.0",
-  "description": "",
+  "description": "Unofficial Benedu API NodeJS Wrapper",
   "main": "index.ts",
   "scripts": {
-    "run": "ts-node ./src"
+    "test": "ts-node ./src"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["benedu", "dimigo"],
+  "author": "rycont",
   "license": "ISC",
   "devDependencies": {
     "@types/fast-html-parser": "^1.0.0",
@@ -20,5 +20,8 @@
   "dependencies": {
     "fast-html-parser": "^1.0.1",
     "form-data": "^3.0.0"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }
