@@ -45,8 +45,8 @@ var getExamInfo = function (_a) {
     return __awaiter(void 0, void 0, void 0, function () {
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, api_1.default.json('/Utils/TestPrint', {
-                        type: 'ymWuGYYSOfmJLRPkt3xlfw{e}{e}',
+                case 0: return [4 /*yield*/, api_1.default.json("/Utils/TestPrint", {
+                        type: "ymWuGYYSOfmJLRPkt3xlfw{e}{e}",
                         "values[]": examId
                     }, providedToken)];
                 case 1: return [2 /*return*/, _b.sent()];

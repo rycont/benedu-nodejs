@@ -1,4 +1,4 @@
-import FormData from 'form-data';
+import FormData from "form-data";
 export declare let fetch: any;
 export declare const setFetch: (f: any) => any;
 declare const _default: {

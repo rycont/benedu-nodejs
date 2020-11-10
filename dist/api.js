@@ -52,7 +52,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.setFetch = exports.fetch = void 0;
 var fast_html_parser_1 = require("fast-html-parser");
-var getUserToken_1 = require("./auth/getUserToken");
 var form_data_1 = __importDefault(require("form-data"));
 var constants_1 = require("./constants");
 exports.setFetch = function (f) { return exports.fetch = f; };
@@ -63,8 +62,8 @@ exports.default = {
                 switch (_a.label) {
                     case 0: return [4 /*yield*/, exports.fetch(constants_1.API_URI + uri, {
                             body: formdata,
-                            headers: __assign(__assign({}, (formdata && formdata.getHeaders())), { Cookie: "ASP.NET_SessionId=" + (providedToken || getUserToken_1.token) }),
-                            method: 'POST'
+                            headers: __assign(__assign({}, (formdata && formdata.getHeaders())), { Cookie: "ASP.NET_SessionId=" + providedToken }),
+                            method: "POST"
                         })];
                     case 1: return [2 /*return*/, _a.sent()];
                 }

@@ -39,7 +39,6 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.token = void 0;
 var form_data_1 = __importDefault(require("form-data"));
 var fast_html_parser_1 = require("fast-html-parser");
 var getRVT_1 = __importDefault(require("./getRVT"));
@@ -51,10 +50,7 @@ var getUserToken = function (_a) {
         var _d;
         return __generator(this, function (_e) {
             switch (_e.label) {
-                case 0:
-                    if (exports.token)
-                        return [2 /*return*/, exports.token];
-                    return [4 /*yield*/, getRVT_1.default()];
+                case 0: return [4 /*yield*/, getRVT_1.default()];
                 case 1:
                     _c = _e.sent(), inputToken = _c.inputToken, cookieToken = _c.cookieToken;
                     formdata = new form_data_1.default();
@@ -63,22 +59,21 @@ var getUserToken = function (_a) {
                     formdata.append("loginPW", password);
                     formdata.append("loginGB", type);
                     return [4 /*yield*/, api_1.fetch("http://benedu.co.kr/Home/Login", {
-                            method: 'POST',
+                            method: "POST",
                             headers: {
                                 "Cookie": "__RequestVerificationToken=" + cookieToken + ";"
                             },
                             body: formdata,
-                            redirect: 'manual'
+                            redirect: "manual"
                         })];
                 case 2:
                     fetched = (_e.sent());
                     return [4 /*yield*/, fetched.text()];
                 case 3:
                     fetchedText = _e.sent();
-                    fetchedToken = (_d = fetched.headers.get('set-cookie')) === null || _d === void 0 ? void 0 : _d.split('Id=')[1].split('; ')[0];
+                    fetchedToken = (_d = fetched.headers.get("set-cookie")) === null || _d === void 0 ? void 0 : _d.split("Id=")[1].split("; ")[0];
                     if (!fetchedToken)
-                        throw new Error(fast_html_parser_1.parse(fetchedText).querySelectorAll('.login-field span')[3].childNodes[0].rawText || "Cannot get token");
-                    exports.token = fetchedToken;
+                        throw new Error(fast_html_parser_1.parse(fetchedText).querySelectorAll(".login-field span")[3].childNodes[0].rawText || "Cannot get token");
                     return [2 /*return*/, fetchedToken];
             }
         });

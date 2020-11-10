@@ -50,8 +50,8 @@ function getRVT() {
                     _b = fast_html_parser_1.parse;
                     return [4 /*yield*/, fetched.text()];
                 case 2:
-                    inputToken = _b.apply(void 0, [_c.sent()]).querySelector('input').attributes.value;
-                    cookieToken = (_a = fetched.headers.get('set-cookie')) === null || _a === void 0 ? void 0 : _a.split('n=')[1].split('; ')[0];
+                    inputToken = _b.apply(void 0, [_c.sent()]).querySelector("input").attributes.value;
+                    cookieToken = (_a = fetched.headers.get("set-cookie")) === null || _a === void 0 ? void 0 : _a.split("n=")[1].split("; ")[0];
                     if (inputToken && cookieToken)
                         return [2 /*return*/, {
                                 inputToken: inputToken, cookieToken: cookieToken

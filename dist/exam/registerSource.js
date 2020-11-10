@@ -48,13 +48,13 @@ var registerSource = function (_a) {
         var registered;
         return __generator(this, function (_b) {
             switch (_b.label) {
-                case 0: return [4 /*yield*/, api_1.default.json('/StudentStudy/SearchResultListSave', {
+                case 0: return [4 /*yield*/, api_1.default.json("/StudentStudy/SearchResultListSave", {
                         selectedSubject: utils_1.concat(subject, enums_1.Subject),
                         selectedId: sourceId,
                         checkedQuestionGrade: utils_1.concat(grade, enums_1.Grade),
                         checkedQuestionSource: utils_1.concat(sourceType, enums_1.Source),
-                        checkedQuestionLevel: '',
-                        inputQuestionYear: enums_1.Year[year] + '|' + enums_1.Year[year],
+                        checkedQuestionLevel: "",
+                        inputQuestionYear: enums_1.Year[year] + "|" + enums_1.Year[year],
                         inputIbtName: examTitle,
                         SearchType: "aCyhptkQ83vKtp43Ilt83Q{e}{e}",
                     }, providedToken)];

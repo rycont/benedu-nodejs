@@ -1,4 +1,3 @@
-export declare let token: string;
 interface Args {
     username: string;
     password: string;
