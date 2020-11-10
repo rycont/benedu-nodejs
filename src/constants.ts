@@ -1,1 +1,1 @@
-export const API_URI="https://benedu.co.kr"
+export const API_URI="https://benedu.co.kr";

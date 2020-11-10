@@ -1,10 +1,10 @@
 {
   "name": "benedu-nodejs",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "Unofficial Benedu API NodeJS Wrapper",
   "main": "./dist/",
   "scripts": {
-    "test": "ts-node ./"
+    "test": "ts-node ./index.ts"
   },
   "keywords": [
     "benedu",
@@ -15,12 +15,16 @@
   "devDependencies": {
     "@types/fast-html-parser": "^1.0.0",
     "@types/node-fetch": "^2.5.7",
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0",
     "dotenv": "^8.2.0",
+    "eslint": "^7.10.0",
     "node-fetch": "^2.6.1",
     "ts-node": "^9.0.0",
     "typescript": "^4.0.3"
   },
   "dependencies": {
+    "@types/form-data": "^2.5.0",
     "fast-html-parser": "^1.0.1",
     "form-data": "^3.0.0",
     "util": "^0.12.3"
